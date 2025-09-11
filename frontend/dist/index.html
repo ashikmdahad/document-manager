@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vivsoft Document Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-file-alt"></i> Vivsoft Document Management System</h1>
+            <div id="api-status" class="status-indicator">
+                <span class="status-dot"></span>
+                <span class="status-text">Checking API...</span>
+            </div>
+        </header>
+
+        <!-- User Login Section -->
+        <section class="user-section" id="user-section">
+            <h2>Welcome! Please enter your details</h2>
+            <form id="user-form">
+                <div class="form-group">
+                    <label for="user-name">Your Name:</label>
+                    <input type="text" id="user-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="user-email">Your Email:</label>
+                    <input type="email" id="user-email" name="email" required>
+                </div>
+                <button type="submit">Continue</button>
+            </form>
+        </section>
+
+        <main id="main-content" style="display: none;">
+            <!-- Upload Document Section -->
+            <section class="upload-section">
+                <h2><i class="fas fa-cloud-upload-alt"></i> Upload Document</h2>
+                <form id="upload-form" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="document-file">Select Document:</label>
+                        <input type="file" id="document-file" name="document" required accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.csv,.jpg,.jpeg,.png,.gif,.zip,.rar">
+                        <small>Supported formats: PDF, Word, Excel, PowerPoint, Images, Text, Archives (Max: 50MB)</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description:</label>
+                        <textarea id="description" name="description" rows="3" placeholder="Brief description of the document..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="tags">Tags:</label>
+                        <input type="text" id="tags" name="tags" placeholder="e.g., report, presentation, important (comma-separated)">
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <label>
+                            <input type="checkbox" id="is-public" name="isPublic">
+                            <span class="checkmark"></span>
+                            Make this document public
+                        </label>
+                    </div>
+                    <button type="submit" id="upload-btn">
+                        <i class="fas fa-upload"></i> Upload Document
+                    </button>
+                    <div id="upload-progress" class="progress-bar" style="display: none;">
+                        <div class="progress-fill"></div>
+                        <span class="progress-text">Uploading...</span>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Documents List Section -->
+            <section class="documents-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-folder-open"></i> My Documents</h2>
+                    <div class="filter-controls">
+                        <select id="filter-type">
+                            <option value="my">My Documents</option>
+                            <option value="shared">Shared with Me</option>
+                            <option value="public">Public Documents</option>
+                        </select>
+                        <input type="text" id="search-documents" placeholder="Search documents...">
+                    </div>
+                </div>
+                <div id="loading" class="loading">Loading documents...</div>
+                <div id="error-message" class="error-message" style="display: none;"></div>
+                <div id="documents-container" class="documents-grid"></div>
+            </section>
+        </main>
+
+        <!-- Document Details Modal -->
+        <div id="document-modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="document-details"></div>
+            </div>
+        </div>
+
+        <!-- Share Document Modal -->
+        <div id="share-modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2><i class="fas fa-share-alt"></i> Share Document</h2>
+                <form id="share-form">
+                    <input type="hidden" id="share-document-id">
+                    <div class="form-group">
+                        <label for="share-emails">Email addresses (comma-separated):</label>
+                        <textarea id="share-emails" name="emails" rows="3" placeholder="user1@example.com, user2@example.com" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="share-permission">Permission:</label>
+                        <select id="share-permission" name="permission">
+                            <option value="read">Read Only</option>
+                            <option value="write">Read & Write</option>
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit"><i class="fas fa-share"></i> Share Document</button>
+                        <button type="button" class="cancel-btn">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- User Info Display -->
+        <div id="user-info" class="user-info" style="display: none;">
+            <span id="current-user"></span>
+            <button id="logout-btn" class="logout-btn">Logout</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
