@@ -7,7 +7,7 @@ CI/CD is automated with GitHub Actions.
 
 ## 🔥 Features
  
-- **File Upload** to AWS S3 with `multer`  
+- **File Upload** to AWS S3   
 - **File Listing & Download** using signed URLs  
 - **Infrastructure as Code** with Terraform modules for S3, RDS, and EC2  
 - **Containerized Development** (Docker & Docker Compose)  
