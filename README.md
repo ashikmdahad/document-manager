@@ -6,8 +6,7 @@ CI/CD is automated with GitHub Actions.
 
 
 ## 🔥 Features
-
-- **User Authentication** via JWT (signup & login)  
+ 
 - **File Upload** to AWS S3 with `multer`  
 - **File Listing & Download** using signed URLs  
 - **Infrastructure as Code** with Terraform modules for S3, RDS, and EC2  
@@ -18,7 +17,7 @@ CI/CD is automated with GitHub Actions.
 
 ## 🛠 Tech Stack
 
-- **Backend:** Node.js, Express, PostgreSQL, JWT, AWS SDK  
+- **Backend:** Node.js, Express,MongoDB, AWS SDK  
 - **Frontend:** React, Vite, Axios  
 - **Containerization:** Docker, Docker Compose  
 - **Infrastructure:** Terraform, AWS (S3, RDS, EC2)  
