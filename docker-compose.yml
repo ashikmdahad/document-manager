@@ -1,0 +1,20 @@
+services:
+  frontend:
+    image: ${ECR_REGISTRY}/${FRONTEND_ECR_REPOSITORY}:latest
+    ports:
+      - "80:80"
+  backend:
+    image: ${ECR_REGISTRY}/${BACKEND_ECR_REPOSITORY}:latest
+    ports:
+      - "3001:3001"
+    depends_on:
+      - mongo
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:

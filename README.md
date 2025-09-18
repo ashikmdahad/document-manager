@@ -1,6 +1,6 @@
 # Document Manager on AWS
 
-A simple SaaS application that lets authenticated users upload, list, and download documents.  
+A simple application that lets users upload, list, and download documents.  
 Fully containerized for local development and provisioned on AWS (EC2, RDS, S3) via Terraform.  
 CI/CD is automated with GitHub Actions.
 
